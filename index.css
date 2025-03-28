@@ -1,0 +1,178 @@
+:root {
+    --container-bg: black;
+    --container-border: red;
+    --buttons-border: yellow;
+    --screen-bg: white;
+    --screen-text: black;
+    --button-bg: rgb(228, 227, 227);
+    --button-hover: rgb(255, 255, 255);
+    --clear-bg: red;
+    --clear-text: white;
+    --operator-bg: orange;
+}
+
+.dark-theme {
+    --container-bg: #222;
+    --container-border: #ff5555;
+    --buttons-border: #ffcc00;
+    --screen-bg: #505050;
+    --screen-text: #f0f0f0;
+    --button-bg: #4a4a4a;
+    --button-hover: #5a5a5a;
+    --clear-bg: #6b0808;
+    --clear-text: white;
+    --operator-bg: rgb(112, 73, 0);
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+body.dark-theme {
+    background-color: #121212;
+}
+
+.calculator-container{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: var(--container-bg);
+    border-radius: 8%;
+    /* border: 2px solid var(--container-border); */
+    padding: 40px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.calculator-screen{
+    width: 100%;
+    height: 80px;
+    background-color: var(--screen-bg);
+    color: var(--screen-text);
+    font-size: 5rem;
+    text-align: right;
+    padding-right: 10px;
+    border: none;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.calculator-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+    padding-bottom: 5px;
+    /* border: 2px solid var(--buttons-border); */
+    transition: border-color 0.3s;
+}
+
+button{
+    height: 60px;
+    background-color: var(--button-bg);
+    color: var(--screen-text);
+    font-size: 2.5rem;
+    font-weight: bold;
+    border: none;
+    margin: 7px;
+    padding: 1rem;
+    border-radius: 30px;
+    flex: 1 0 17%;
+    transition: background-color 0.3s, color 0.3s;
+}
+.equal-button {
+    flex: 0 0 70%; /* Takes up 66% of the row */
+}
+
+.backspace-button {
+    flex: 0 0 20%; /* Takes up 33% of the row */
+}
+.all-clear{
+    background-color: var(--clear-bg);
+    color: var(--clear-text);
+}
+
+.equal-button{
+    width: 66%;
+}
+.operator-button{
+    background-color: var(--operator-bg);
+    color: var(--screen-text);
+}
+button:hover{
+    background-color: var(--button-hover);
+    cursor: pointer;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.theme-switch {
+    display: none;
+}
+
+.theme-switch-label {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-switch-label::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.theme-switch:checked + .theme-switch-label {
+    background-color: #66bb6a;
+}
+
+.theme-switch:checked + .theme-switch-label::after {
+    transform: translateX(30px);
+}
+
+.theme-switch-label span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.theme-switch-label span:first-child {
+    left: 8px;
+}
+
+.theme-switch-label span:last-child {
+    right: 8px;
+}
